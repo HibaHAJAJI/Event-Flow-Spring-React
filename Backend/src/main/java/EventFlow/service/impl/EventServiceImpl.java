@@ -21,7 +21,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public EventResponse createEvent(EventRequest request){
       Event event = mapper.toEntity(request);
-      return mapper.toDto(event);
+      return mapper.toDto(repository.save(event));
     }
 
     @Override
@@ -42,6 +42,15 @@ public class EventServiceImpl implements EventService {
         Event update=repository.save(event);
 
         return mapper.toDto(update);
+   }
+
+   @Override
+    public void deleteEvent(Long id){
+       if (!repository.existsById(id)) {
+           throw new RuntimeException("Event introuvable !");
+       }
+       repository.deleteById(id);
+
    }
 
 }

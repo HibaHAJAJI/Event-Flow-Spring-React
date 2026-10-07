@@ -14,4 +14,6 @@ public interface EventService {
 
     EventResponse updateEvent(EventRequest request,Long id);
 
+    void deleteEvent(Long id);
+
 }
