@@ -9,6 +9,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RequestMapping("/api/event")
 @RestController
@@ -35,5 +37,10 @@ public class EventController {
     @DeleteMapping("/{id}")
     public void DeleteEvent(@PathVariable Long id){
         service.deleteEvent(id);
+    }
+
+    @GetMapping
+    public List<EventResponse> getAllEvents(){
+        return service.getAllEvents();
     }
 }

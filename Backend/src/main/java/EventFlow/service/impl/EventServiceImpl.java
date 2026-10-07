@@ -10,6 +10,8 @@ import EventFlow.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -51,6 +53,12 @@ public class EventServiceImpl implements EventService {
        }
        repository.deleteById(id);
 
+   }
+
+   @Override
+    public List<EventResponse> getAllEvents(){
+        List<Event>events=repository.findAll();
+        return mapper.toDtoList(events);
    }
 
 }

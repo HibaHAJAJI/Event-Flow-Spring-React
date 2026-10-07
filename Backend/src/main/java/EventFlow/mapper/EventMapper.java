@@ -7,6 +7,8 @@ import EventFlow.entity.Event;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
+import java.util.List;
+
 
 @Mapper(componentModel= "spring")
 public interface EventMapper {
@@ -16,6 +18,8 @@ public interface EventMapper {
    EventResponse toDto (Event event);
 
    void updateEvent(@MappingTarget Event event,EventRequest request);
+
+   List<EventResponse>toDtoList(List<Event>events);
 
 
 
