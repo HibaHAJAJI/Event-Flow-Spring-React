@@ -8,7 +8,9 @@ import EventFlow.mapper.EventMapper;
 import EventFlow.repository.EventRepository;
 import EventFlow.service.EventService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public EventResponse getEventById(Long id){
         Event event =repository.findById(id)
-                .orElseThrow(()->new RuntimeException("Event non trouvé"));
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"Event non trouvé"));
         return mapper.toDto(event);
 
     }
@@ -37,7 +39,7 @@ public class EventServiceImpl implements EventService {
    @Override
    public EventResponse updateEvent(EventRequest request,Long id){
         Event event = repository.findById(id)
-                .orElseThrow(()->new RuntimeException("Event non trouvé"));
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"Event non trouvé"));
 
         mapper.updateEvent(event,request);
 
@@ -49,7 +51,7 @@ public class EventServiceImpl implements EventService {
    @Override
     public void deleteEvent(Long id){
        if (!repository.existsById(id)) {
-           throw new RuntimeException("Event introuvable !");
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Event introuvable !");
        }
        repository.deleteById(id);
 
