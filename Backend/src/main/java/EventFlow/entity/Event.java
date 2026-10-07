@@ -1,6 +1,7 @@
 package EventFlow.entity;
 
 
+import EventFlow.enums.StatutEvent;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     private String titre;
 
