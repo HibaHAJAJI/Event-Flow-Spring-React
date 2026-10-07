@@ -11,4 +11,7 @@ public interface EventService {
 
     EventResponse getEventById(Long id);
 
+
+    EventResponse updateEvent(EventRequest request,Long id);
+
 }

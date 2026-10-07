@@ -32,4 +32,16 @@ public class EventServiceImpl implements EventService {
 
     }
 
+   @Override
+   public EventResponse updateEvent(EventRequest request,Long id){
+        Event event = repository.findById(id)
+                .orElseThrow(()->new RuntimeException("Event non trouvé"));
+
+        mapper.updateEvent(event,request);
+
+        Event update=repository.save(event);
+
+        return mapper.toDto(update);
+   }
+
 }
