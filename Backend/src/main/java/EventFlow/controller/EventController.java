@@ -3,11 +3,11 @@ package EventFlow.controller;
 
 import EventFlow.dto.EventRequest;
 import EventFlow.dto.EventResponse;
+import EventFlow.entity.Event;
 import EventFlow.service.EventService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RequestMapping("/api/event")
@@ -18,7 +18,12 @@ public class EventController {
     private final EventService service;
 
     @PostMapping
-    public EventResponse addEvent(EventRequest request){
+    public EventResponse addEvent(@Valid @RequestBody EventRequest request){
         return service.createEvent(request);
+    }
+
+    @GetMapping("/id")
+    public EventResponse getEventById(@PathVariable Long id){
+        return service.getEventById(id);
     }
 }

@@ -8,4 +8,7 @@ public interface EventService {
 
     EventResponse createEvent(EventRequest request);
 
+
+    EventResponse getEventById(Long id);
+
 }

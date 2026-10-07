@@ -8,7 +8,6 @@ import EventFlow.mapper.EventMapper;
 import EventFlow.repository.EventRepository;
 import EventFlow.service.EventService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 
@@ -17,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class EventServiceImpl implements EventService {
 
     private final EventMapper mapper;
+    private final EventRepository repository;
 
     @Override
     public EventResponse createEvent(EventRequest request){
@@ -24,5 +24,12 @@ public class EventServiceImpl implements EventService {
       return mapper.toDto(event);
     }
 
+    @Override
+    public EventResponse getEventById(Long id){
+        Event event =repository.findById(id)
+                .orElseThrow(()->new RuntimeException("Event non trouvé"));
+        return mapper.toDto(event);
+
+    }
 
 }
