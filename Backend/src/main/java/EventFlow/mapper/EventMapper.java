@@ -1,4 +1,4 @@
-package EventFlow.Mapper;
+package EventFlow.mapper;
 
 
 import EventFlow.dto.EventRequest;
