@@ -63,4 +63,5 @@ public class EventServiceImpl implements EventService {
         return mapper.toDtoList(events);
    }
 
+
 }

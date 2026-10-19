@@ -3,7 +3,6 @@ package EventFlow.controller;
 
 import EventFlow.dto.EventRequest;
 import EventFlow.dto.EventResponse;
-import EventFlow.entity.Event;
 import EventFlow.service.EventService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RequestMapping("/api/event")
+@RequestMapping("/api/events")
 @RestController
 @RequiredArgsConstructor
 public class EventController {
