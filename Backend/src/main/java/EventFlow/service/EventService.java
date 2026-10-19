@@ -4,6 +4,7 @@ package EventFlow.service;
 import EventFlow.dto.EventRequest;
 import EventFlow.dto.EventResponse;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface EventService {
